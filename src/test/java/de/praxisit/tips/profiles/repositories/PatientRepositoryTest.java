@@ -2,7 +2,7 @@ package de.praxisit.tips.profiles.repositories;
 
 import de.praxisit.tips.profiles.TipsSpringProfilesApplication;
 import de.praxisit.tips.profiles.config.Profiles;
-import de.praxisit.tips.profiles.entities.Patient;
+import de.praxisit.tips.profiles.data.Patient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

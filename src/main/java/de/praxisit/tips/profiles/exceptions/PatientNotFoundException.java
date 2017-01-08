@@ -1,6 +1,6 @@
 package de.praxisit.tips.profiles.exceptions;
 
-import de.praxisit.tips.profiles.entities.Patient;
+import de.praxisit.tips.profiles.data.Patient;
 
 /**
  * Exception if {@link Patient} is not found.

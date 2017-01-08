@@ -1,43 +1,40 @@
 package de.praxisit.tips.profiles.services;
 
-import de.praxisit.tips.profiles.entities.Patient;
-import de.praxisit.tips.profiles.exceptions.PatientNotFoundException;
-import de.praxisit.tips.profiles.repositories.PatientRepository;
+import de.praxisit.tips.profiles.common.DateSupplier;
+import de.praxisit.tips.profiles.data.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-
-import static java.util.stream.Collectors.toList;
+import java.time.Period;
+import java.util.Optional;
 
 /**
- * REST-Service for {@link Patient}.
+ * Common functions for {@link Patient}s.
  *
  * @author Bernd Kursawe (bernd.kursawe@praxisit.de)
  * @since 08.01.17
  */
-@RestController
-@RequestMapping(path = "/patient")
+@Service
 public class PatientService {
 
-    private final PatientRepository repository;
+    private final DateSupplier date;
 
     @Autowired
-    public PatientService( PatientRepository repository ) {
-        this.repository = repository;
+    public PatientService( DateSupplier now ) {
+        this.date = now;
     }
 
-    @GetMapping("/{id:\\d+}")
-    public Patient findPatient(@PathVariable("id") final int id) {
-        return repository.findOne( id ).orElseThrow(() -> new PatientNotFoundException(id));
+    /**
+     * Computes the current age of a patient.
+     *
+     * @param patient
+     *         {@link Patient}
+     * @return age of patient in years or {@link Optional#empty()} if {@code patient} is {@code
+     * null} or {@link Patient#birthday} is unknown
+     */
+    public Optional<Integer> ageOf( final Patient patient ) {
+        return Optional.ofNullable( patient )
+                .map( p -> p.getBirthday( ) )
+                .map( birthday -> Period.between( birthday, date.now( ) ).getYears( ) );
     }
-
-    @GetMapping("/")
-    public List<Patient> findAll() {
-        return repository.findAll().collect(toList());
-    }
-
 }

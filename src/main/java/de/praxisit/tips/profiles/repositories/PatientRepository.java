@@ -1,6 +1,6 @@
 package de.praxisit.tips.profiles.repositories;
 
-import de.praxisit.tips.profiles.entities.Patient;
+import de.praxisit.tips.profiles.data.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.Repository;
 

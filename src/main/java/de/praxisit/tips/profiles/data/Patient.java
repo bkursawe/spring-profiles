@@ -1,4 +1,4 @@
-package de.praxisit.tips.profiles.entities;
+package de.praxisit.tips.profiles.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
