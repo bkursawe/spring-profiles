@@ -1,0 +1,84 @@
+= Patient API Documentation
+
+== Patient
+
+=== Find a single patient
+
+Find a patient by its unique id.
+
+==== Request
+
+include::{snippets}/patient/find-patient/http-request.adoc[]
+
+=== Path parameters
+
+include::{snippets}/patient/find-patient/path-parameters.adoc[]
+
+
+==== Response OK
+
+.Beispiel
+include::{snippets}/patient/find-patient/http-response.adoc[]
+
+For a description of the fields see <<Patient Data>>.
+
+==== Response NOT FOUND
+
+include::{snippets}/patient/find-patient-not-found/http-response.adoc[]
+
+
+=== Find all patients
+
+Find all patients.
+
+==== Request
+
+include::{snippets}/patient/find-all-patient/http-request.adoc[]
+
+==== Response OK
+
+.Beispiel
+include::{snippets}/patient/find-all-patient/http-response.adoc[]
+
+For a description of the fields see <<Patient Data>>.
+
+
+=== Create a new patient
+
+Create a new patient in the database. The _id_ should be `null` and a new and unique one is set
+by the database.
+
+==== Request
+
+include::{snippets}/patient/create-patient/http-request.adoc[]
+
+=== Request body
+
+include::{snippets}/patient/create-patient/request-body.adoc[]
+
+
+==== Response OK
+
+.Beispiel
+include::{snippets}/patient/find-patient/http-response.adoc[]
+
+For a description of the fields see <<Patient Data>>.
+
+==== Response NOT FOUND
+
+include::{snippets}/patient/find-patient-not-found/http-response.adoc[]
+
+
+
+=== Save changes
+
+
+=== Delete a patient
+
+
+== Data structures
+
+[[Patient Data]]
+=== Patient
+
+include::{snippets}/patient/find-patient/response-fields.adoc[]
